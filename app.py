@@ -22,17 +22,39 @@ end_date = st.date_input("Tanggal Akhir", df_kota["datetime"].max())
 mask = (df_kota["datetime"].dt.date >= start_date) & (df_kota["datetime"].dt.date <= end_date)
 df_filtered = df_kota[mask]
 
-# Threshold sederhana (sementara sama semua kota)
+# Threshold
 threshold = st.number_input("Set Ambang ROB (meter)", value=0.8)
 
 # Plot
-fig = px.line(df_filtered, x="datetime", y="elev_m", title=f"Grafik Pasut - {kota}")
+fig = px.line(df_filtered, x="datetime", y="elev_m",
+              title=f"Grafik Pasut - {kota}")
 
 fig.add_hline(y=threshold, line_color="red")
 
 st.plotly_chart(fig)
 
-# Peringatan
+# ===============================
+# 📊 STATISTIK TAMBAHAN (v1.1)
+# ===============================
+
+if not df_filtered.empty:
+
+    st.subheader("📊 Informasi Statistik")
+
+    max_elev = df_filtered["elev_m"].max()
+    waktu_max = df_filtered.loc[df_filtered["elev_m"].idxmax(), "datetime"]
+    jumlah_jam = (df_filtered["elev_m"] >= threshold).sum()
+
+    col1, col2, col3 = st.columns(3)
+
+    col1.metric("Elevasi Maksimum (m)", f"{max_elev:.2f}")
+    col2.metric("Waktu Maksimum", waktu_max.strftime("%Y-%m-%d %H:%M"))
+    col3.metric("Jam ≥ Ambang", int(jumlah_jam))
+
+# ===============================
+# 🚨 Peringatan
+# ===============================
+
 if (df_filtered["elev_m"] >= threshold).any():
     st.error("⚠ POTENSI ROB TERDETEKSI")
 else:
