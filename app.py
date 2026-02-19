@@ -37,4 +37,3 @@ if (df_filtered["elev_m"] >= threshold).any():
     st.error("⚠ POTENSI ROB TERDETEKSI")
 else:
     st.success("Kondisi Aman")
-
