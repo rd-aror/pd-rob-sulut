@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-st.write("APP BERJALAN")
+st.write("Developed by: Lydia Monika & Ricky Daniel Aror")
 
 st.title("Sistem Informasi Pasang Surut Sulawesi Utara")
 st.subheader("Peringatan Dini Banjir Pesisir (PD ROB)")
