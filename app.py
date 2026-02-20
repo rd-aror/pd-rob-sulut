@@ -45,12 +45,16 @@ if not df_filtered.empty:
     waktu_max = df_filtered.loc[df_filtered["elev_m"].idxmax(), "datetime"]
     jumlah_jam = (df_filtered["elev_m"] >= threshold).sum()
 
-    col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns(2)
 
-    col1.metric("Elevasi Maksimum (m)", f"{max_elev:.2f}")
-    col2.metric("Waktu Maksimum", waktu_max.strftime("%d-%m-%Y %H:%M"))
-    col3.metric("Jam ≥ Ambang", int(jumlah_jam))
+with col1:
+    st.metric("Elevasi Maksimum (m)", f"{max_elev:.2f}")
+    st.metric("Jam ≥ Ambang", int(jumlah_jam))
 
+with col2:
+    st.metric("Waktu Maksimum",
+              waktu_max.strftime("%d-%m-%Y %H:%M"))
+  
 # ===============================
 # 🚨 Peringatan
 # ===============================
