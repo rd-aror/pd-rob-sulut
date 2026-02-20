@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-st.write("Developed by: Lydia Monika & Ricky Daniel Aror")
-
 st.title("Sistem Informasi Pasang Surut Sulawesi Utara")
 st.subheader("Peringatan Dini Banjir Pesisir (PD ROB)")
+
+st.write("Developed by: Lydia Monika & Ricky Daniel Aror")
 
 # Load data
 df = pd.read_csv("pasut_sulut_clean.csv", parse_dates=["datetime"])
