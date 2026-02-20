@@ -48,7 +48,7 @@ if not df_filtered.empty:
     col1, col2, col3 = st.columns(3)
 
     col1.metric("Elevasi Maksimum (m)", f"{max_elev:.2f}")
-    col2.metric("Waktu Maksimum", waktu_max.strftime("%Y-%m-%d %H:%M"))
+    col2.metric("Waktu Maksimum", waktu_max.strftime("%d-%m-%Y %H:%M"))
     col3.metric("Jam ≥ Ambang", int(jumlah_jam))
 
 # ===============================
