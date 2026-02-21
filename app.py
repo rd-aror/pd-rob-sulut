@@ -19,6 +19,7 @@ st.caption("Developed by: Lydia Monika & Ricky Daniel Aror")
 # LOAD DATA
 # ==========================================
 @st.cache_data
+st.cache_data.clear()
 def load_data():
     df = pd.read_csv("pasut_sulut_clean.csv", parse_dates=["datetime"])
     df = df.sort_values("datetime")
