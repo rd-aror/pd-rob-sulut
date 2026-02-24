@@ -13,7 +13,7 @@ st.set_page_config(
 st.title("North Sulawesi Tide Information System")
 st.subheader("Coastal Flood Early Warning System (CF-EWS) v1.5")
 
-st.caption("Developed by: Lydia Monika & Ricky Daniel Aror")
+st.caption("Developed by: BMKG - Bitung Maritime Meteorological Station")
 
 # ==========================================
 # LOAD DATA
